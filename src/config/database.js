@@ -1,12 +1,16 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
-mongoose.connect("mongodb+srv://db_test:1234@cluster0.wrshyr2.mongodb.net/?retryWrites=true&w=majority")
+const DATABASE_URL = "mongodb+srv://db_test:1234@cluster0.wrshyr2.mongodb.net/?retryWrites=true&w=majority";
 
-let db = mongoose.connection
+const connectToDatabase = async () => {
+    try {
+        await mongoose.connect(DATABASE_URL);
+        console.log("Conexão com o banco de dados estabelecida com sucesso");
+    } catch (error) {
+        console.error("Erro de conexão:", error);
+    }
+};
 
-db.on('error', console.error.bind(console, 'Erro de conexão:'))
-db.once('open', function() {
-  console.log("Conexão com o banco de dados estabelecida com sucesso")
-});
+connectToDatabase();
 
-module.exports = db
+module.exports = mongoose.connection;

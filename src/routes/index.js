@@ -1,8 +1,9 @@
-const express = require("express")
-const characters = require("./characterRoutes")
+const express = require("express");
+const characterRoutes = require("./characterRoutes");
 
-const routes = (app) => {
-    app.use(express.json(), characters)
+const configureRoutes = (app) => {
+    app.use(express.json());
+    app.use(characterRoutes);
 }
 
-module.exports = routes
+module.exports = configureRoutes;

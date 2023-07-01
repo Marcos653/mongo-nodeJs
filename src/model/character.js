@@ -1,12 +1,9 @@
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema
+const { Schema, model } = require('mongoose');
 
 const CharacterSchema = new Schema({
-  realName: String,
-  nickname: String,
-  description: String
+  realName: { type: String, required: true },
+  nickname: { type: String, required: true },
+  description: { type: String, required: true },
 });
 
-const Character = mongoose.model('Character', CharacterSchema)
-
-module.exports = Character
+module.exports = model('Character', CharacterSchema);
