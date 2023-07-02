@@ -1,5 +1,5 @@
-const Ajv = require('ajv');
-const ajv = new Ajv();
+const Ajv = require('ajv')
+const ajv = new Ajv()
 
 const characterJsonSchema = {
     type: 'object',
@@ -10,16 +10,16 @@ const characterJsonSchema = {
     },
     required: ['realName', 'nickname', 'description'],
     additionalProperties: false,
-};
+}
 
-const validate = ajv.compile(characterJsonSchema);
+const validate = ajv.compile(characterJsonSchema)
 
 class Validation {
     static validateCharacter(data) {
-        const isValid = validate(data);
+        const isValid = validate(data)
 
         if (!isValid) {
-            this.throwValidationError(validate.errors);
+            this.throwValidationError(validate.errors)
         }
     }
 
@@ -28,13 +28,13 @@ class Validation {
             return {
                 field: err.dataPath.slice(1),
                 message: err.message
-            };
-        });
+            }
+        })
 
-        const error = new Error('Invalid character data');
-        error.details = errorDetails;
-        throw error;
+        const error = new Error('Invalid character data')
+        error.details = errorDetails
+        throw error
     }
 }
 
-module.exports = Validation;
+module.exports = Validation

@@ -2,9 +2,9 @@ const service = require("../service/characterService")
 
 class CharacterController {
 
-    static async getCharacterById(req, res) {
+    static async getCharacterByNickname(req, res) {
         try{
-            const character = await service.getCharacterById(req.params.id)
+            const character = await service.getCharacterByNickname(req.params.nickname)
             res.status(200).send(character)
         } catch (err) {
             res.status(400).send({ message: `${err.message} - ID does not location`})

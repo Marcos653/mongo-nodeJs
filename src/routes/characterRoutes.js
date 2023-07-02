@@ -1,9 +1,9 @@
-const express = require("express");
-const { getCharacterById, createCharacter } = require("../controller/characterController");
-const router = express.Router();
+const express = require("express")
+const { getCharacterByNickname, createCharacter } = require("../controller/characterController")
+const router = express.Router()
 
 router
-    .get("/characters/:id", getCharacterById)
-    .post("/characters", createCharacter);
+    .get("/characters/:nickname", getCharacterByNickname)
+    .post("/characters", createCharacter)
 
-module.exports = router;
+module.exports = router

@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model } = require('mongoose')
 
 const CharacterSchema = new Schema({
   realName: { type: String, required: true },
@@ -6,4 +6,6 @@ const CharacterSchema = new Schema({
   description: { type: String, required: true },
 });
 
-module.exports = model('Character', CharacterSchema);
+CharacterSchema.index({ nickname: 1 })
+
+module.exports = model('Character', CharacterSchema)

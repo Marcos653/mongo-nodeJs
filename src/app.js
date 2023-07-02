@@ -1,27 +1,27 @@
-const express = require('express');
+const express = require('express')
 
-const db = require('./config/database');
-const routes = require('./routes/index');
+const db = require('./config/database')
+const routes = require('./routes/index')
 
 function handleDBError(err) {
-  console.log('Connection error:', err);
+  console.log('Connection error:', err)
 }
 
 function handleDBOpen() {
-  console.log('Connection with database has been established');
+  console.log('Connection with database has been established')
 }
 
 function initializeApp() {
-  const app = express();
-  app.use(express.json());
-  routes(app);
+  const app = express()
+  app.use(express.json())
+  routes(app)
   
-  return app;
+  return app
 }
 
-db.on('error', handleDBError);
-db.once('open', handleDBOpen);
+db.on('error', handleDBError)
+db.once('open', handleDBOpen)
 
-const app = initializeApp();
+const app = initializeApp()
 
-module.exports = app;
+module.exports = app
