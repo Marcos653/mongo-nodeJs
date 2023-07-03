@@ -19,6 +19,25 @@ class CharacterController {
             res.status(400).send({ message: `${err.message} - failed in create Character`})
         }
     }
+
+    static async getAll(req, res) {
+        try{
+            const { page = 1, limit = 10 } = req.query;
+            const characters = await service.getAll(page, limit)
+            res.status(200).send(characters)
+        } catch (err) {
+            res.status(400).send({ message: `${err.message}`})
+        }
+    }
+
+    static async deleteCharacter(req, res) {
+        try{
+            await service.deleteCharacter(req.params.id)
+            res.status(200).send({ message: "Character successfully deleted" })
+        } catch (err) {
+            res.status(400).send({ message: `${err.message}`})
+        }
+    }
 }
 
 module.exports = CharacterController
