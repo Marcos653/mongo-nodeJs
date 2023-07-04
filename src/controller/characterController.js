@@ -38,6 +38,15 @@ class CharacterController {
             res.status(400).send({ message: `${err.message}`})
         }
     }
+
+    static async updateCharacter(req, res) {
+        try {
+            const character = await service.updateCharacter(req.params.id, req.body)
+            res.status(200).send(character)
+        } catch (err) {
+            res.status(400).send({ message: `${err.message}`})
+        }
+    }    
 }
 
 module.exports = CharacterController

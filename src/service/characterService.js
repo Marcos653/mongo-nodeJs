@@ -28,6 +28,14 @@ class CharacterService {
             throw error
         }
     }
+
+    static async updateCharacter(id, data) {
+        const newCharacter = await character.findByIdAndUpdate(id, data, { new: true })
+
+        if (!newCharacter) {
+            throw new Error('Character not found')
+        }
+    }
 }
 
 module.exports = CharacterService
